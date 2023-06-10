@@ -57,20 +57,20 @@ const HomePage = ({
           content="Ngập tràn ưu đãi dành cho Khách hàng | Báo giá lăn bánh tốt nhất | Ưu đãi phụ kiện cao cấp | Cam kết không phát sinh chi phí | Liên hệ ngay"
           key="desc"
         />
-        <meta name="og:locale" content="vi_VN" key="desc" />
-        <meta name="og:type" content="website" key="desc" />
-        <meta name="og:url" content="https://fordmydinhgiatot.com" key="desc" />
+        <meta property="og:locale" content="vi_VN" key="desc" />
+        <meta property="og:type" content="website" key="desc" />
+        <meta property="og:url" content="https://fordmydinhgiatot.com" key="desc" />
         <meta
-          name="og:title"
+          property="og:title"
           content="Ford Mỹ Đình giá tốt - Cam kết giá tốt - Tư vấn nhiệt thành - Uy tín"
           key="desc"
         />
         <meta
-          name="og:description"
+          property="og:description"
           content="Ngập tràn ưu đãi dành cho Khách hàng | Báo giá lăn bánh tốt nhất | Ưu đãi phụ kiện cao cấp | Cam kết không phát sinh chi phí | Liên hệ ngay"
           key="desc"
         />
-        <meta name="og:site_name" content="Ford Mỹ Đình giá tốt" key="desc" />
+        <meta property="og:site_name" content="Ford Mỹ Đình giá tốt" key="desc" />
       </Head>
       <div className="flex flex-col w-full justify-center items-center">
         <Carousel />
