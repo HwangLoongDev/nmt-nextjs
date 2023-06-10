@@ -7,6 +7,7 @@ import Feedback from "./feedback";
 import { dbNews, dbProducts } from "../../common/firebase.config";
 import { getDocs } from "firebase/firestore";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next";
+import Head from "next/head";
 
 type Props = {
   products: any;
@@ -46,18 +47,44 @@ const HomePage = ({
   );
 
   return (
-    <div className="flex flex-col w-full justify-center items-center">
-      <Carousel />
-      <div className="w-full lg:w-[1220px] xl:w-[1220px] px-6 py-12">
-        <ProductGroups
-          listProductFilterByGroup={listProductFilterByGroup}
-          allProducts={products}
+    <>
+      <Head>
+        <title>
+          Ford Mỹ Đình giá tốt - Cam kết giá tốt - Tư vấn nhiệt thành - Uy tín
+        </title>
+        <meta
+          name="description"
+          content="Ngập tràn ưu đãi dành cho Khách hàng | Báo giá lăn bánh tốt nhất | Ưu đãi phụ kiện cao cấp | Cam kết không phát sinh chi phí | Liên hệ ngay"
+          key="desc"
         />
-        <BestSeller bestSellerList={bestSellerList} />
-        <News newsList={news} />
-        <Feedback />
+        <meta name="og:locale" content="vi_VN" key="desc" />
+        <meta name="og:type" content="website" key="desc" />
+        <meta name="og:url" content="https://fordmydinhgiatot.com" key="desc" />
+        <meta
+          name="og:title"
+          content="Ford Mỹ Đình giá tốt - Cam kết giá tốt - Tư vấn nhiệt thành - Uy tín"
+          key="desc"
+        />
+        <meta
+          name="og:description"
+          content="Ngập tràn ưu đãi dành cho Khách hàng | Báo giá lăn bánh tốt nhất | Ưu đãi phụ kiện cao cấp | Cam kết không phát sinh chi phí | Liên hệ ngay"
+          key="desc"
+        />
+        <meta name="og:site_name" content="Ford Mỹ Đình giá tốt" key="desc" />
+      </Head>
+      <div className="flex flex-col w-full justify-center items-center">
+        <Carousel />
+        <div className="w-full lg:w-[1220px] xl:w-[1220px] px-6 py-12">
+          <ProductGroups
+            listProductFilterByGroup={listProductFilterByGroup}
+            allProducts={products}
+          />
+          <BestSeller bestSellerList={bestSellerList} />
+          <News newsList={news} />
+          <Feedback />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 
