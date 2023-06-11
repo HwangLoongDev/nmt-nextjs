@@ -2,6 +2,7 @@ import Image from "next/image";
 import React, { useState } from "react";
 import { formatNumber } from "@/common/function.js";
 import Link from "next/link";
+import DialogComponent from "../components/dialog/dialog";
 
 type Props = {
   allProducts: any;
@@ -106,99 +107,87 @@ const ProductGroups = ({ listProductFilterByGroup, allProducts }: Props) => {
         </div>
       </div>
 
-      <div
-        onClick={() => setQuickView(false)}
-        id="myModal"
-        className={`modal ${
-          quickView ? "flex" : "hidden"
-        } z-20 fixed top-0 left-0 justify-center items-center`}
-      >
-        {/* <!-- Modal content --> */}
-        {quickViewData && productSelected && (
-          <div
-            className="modal-content rounded shadow-md 2xl:w-5/6 w-full relative"
-            onClick={(event) => event.stopPropagation()}
-          >
-            <span
-              className="close absolute right-3 top-0"
-              onClick={() => setQuickView(false)}
-            >
-              &times;
-            </span>
-            <div className="flex flex-col">
-              <span className="text-xl font-medium">Chi tiết sản phẩm</span>
+      <DialogComponent
+        open={quickView}
+        closeOnClickOutside
+        onClose={() => setQuickView(false)}
+        content={
+          <>
+            {quickViewData && productSelected && (
+              <div className="flex flex-col">
+                <span className="text-xl font-medium">Chi tiết sản phẩm</span>
 
-              <div className="flex lg:flex-row flex-col w-full">
-                <div className="w-full lg:w-2/5 h-[400px] relative">
-                  <Image
-                    src={productSelected.images[0]}
-                    alt=""
-                    fill
-                    objectFit="contain"
-                  />
-                </div>
-                <>{console.log(quickViewData)}</>
-                <div className="w-full lg:w-3/5 flex flex-col gap-3">
-                  <span className="text-2xl font-medium">
-                    {quickViewData.productName} - {quickViewData.category.name}
-                  </span>
-                  <span className="font-medium">
-                    <span className="text-3xl">
-                      {formatNumber(productSelected.price)}
-                    </span>{" "}
-                    VNĐ
-                  </span>
-                  <span className="text-lg font-medium">Màu sắc</span>
-
-                  <div className="flex flex-wrap gap-3">
-                    {quickViewData.productClassification?.map(
-                      (e: any, idx: number) => (
-                        <div
-                          key={idx}
-                          className="text-lg px-4 py-1 rounded border cursor-pointer"
-                          onClick={() => setProducSelected(e)}
-                        >
-                          {e.color}
-                        </div>
-                      )
-                    )}
+                <div className="flex lg:flex-row flex-col w-full">
+                  <div className="w-full lg:w-2/5 h-[400px] relative">
+                    <Image
+                      src={productSelected.images[0]}
+                      alt=""
+                      fill
+                      objectFit="contain"
+                    />
                   </div>
-                  <>{console.log(prodSameGroup)}</>
-                  {!!prodSameGroup?.length && (
-                    <div className="flex flex-col">
-                      <span className="text-lg font-medium">
-                        Sản phẩm cùng loại
-                      </span>
+                  <div className="w-full lg:w-3/5 flex flex-col gap-3">
+                    <span className="text-2xl font-medium">
+                      {quickViewData.productName} -{" "}
+                      {quickViewData.category.name}
+                    </span>
+                    <span className="font-medium">
+                      <span className="text-3xl">
+                        {formatNumber(productSelected.price)}
+                      </span>{" "}
+                      VNĐ
+                    </span>
+                    <span className="text-lg font-medium">Màu sắc</span>
 
-                      <div className="flex flex-wrap justify-center items-center">
-                        {prodSameGroup?.map((e: any, idx: number) => (
+                    <div className="flex flex-wrap gap-3">
+                      {quickViewData.productClassification?.map(
+                        (e: any, idx: number) => (
                           <div
                             key={idx}
-                            className="w-full md:w-1/2 lg:w-1/3 cursor-pointer p-3"
-                            onClick={() => btnQuickViewClick(e)}
+                            className="text-lg px-4 py-1 rounded border cursor-pointer"
+                            onClick={() => setProducSelected(e)}
                           >
-                            <div className="w-full  h-[200px] relative">
-                              <Image
-                                src={e.productClassification[0].images[0]}
-                                alt=""
-                                objectFit="contain"
-                                fill
-                              />
-                            </div>
-                            <div className="text-base font-medium md:text-left text-center">
-                              {e.productName}
-                            </div>
+                            {e.color}
                           </div>
-                        ))}
-                      </div>
+                        )
+                      )}
                     </div>
-                  )}
+                    {!!prodSameGroup?.length && (
+                      <div className="flex flex-col">
+                        <span className="text-lg font-medium">
+                          Sản phẩm cùng loại
+                        </span>
+
+                        <div className="flex flex-wrap justify-center items-center">
+                          {prodSameGroup?.map((e: any, idx: number) => (
+                            <div
+                              key={idx}
+                              className="w-full md:w-1/2 lg:w-1/3 cursor-pointer p-3"
+                              onClick={() => btnQuickViewClick(e)}
+                            >
+                              <div className="w-full  h-[200px] relative">
+                                <Image
+                                  src={e.productClassification[0].images[0]}
+                                  alt=""
+                                  objectFit="contain"
+                                  fill
+                                />
+                              </div>
+                              <div className="text-base font-medium md:text-left text-center">
+                                {e.productName}
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-        )}
-      </div>
+            )}
+          </>
+        }
+      />
     </>
   );
 };

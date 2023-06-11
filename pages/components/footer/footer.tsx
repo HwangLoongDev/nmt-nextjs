@@ -1,11 +1,26 @@
-import React from "react";
+import { dbCustomers } from "@/common/firebase.config";
+import { addDoc } from "firebase/firestore";
+import moment from "moment";
+import React, { useState } from "react";
 import { Facebook, Twitter, Youtube } from "react-feather";
 
 type Props = {};
 
 const Footer = (props: Props) => {
+  const [infoValue, setInfoValue] = useState<string>("");
+
+  const handleSubscribe = () => {
+    if (infoValue) {
+      const docData = {
+        customerInfo: infoValue,
+        registerDate: moment(new Date()).format(),
+      };
+      addDoc(dbCustomers, { ...docData }).then(() => alert('Hân hạnh được phục vụ quý khách!'));
+    }
+  };
+
   return (
-    <footer className="relative bg-gray-100 pt-8 pb-6">
+    <footer id="footer" className="relative bg-gray-100 pt-8 pb-6">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap text-left lg:text-left">
           <div className="w-full lg:w-6/12 px-4">
@@ -22,8 +37,12 @@ const Footer = (props: Props) => {
                 placeholder="Số điện thoại hoặc địa chỉ mail của bạn"
                 className="h-11 px-6 flex-1 flex rounded border border-blue-300"
                 type="text"
+                onChange={(e) => setInfoValue(e.target.value)}
               />
-              <button className="h-11 w-[200px] bg-blue-500 rounded hover:bg-blue-600 text-white font-medium text-lg transition-colors duration-300">
+              <button
+                onClick={handleSubscribe}
+                className="h-11 w-[200px] bg-blue-500 rounded hover:bg-blue-600 text-white font-medium text-lg transition-colors duration-300"
+              >
                 Đăng ký
               </button>
             </div>

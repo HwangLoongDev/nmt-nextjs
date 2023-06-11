@@ -59,7 +59,11 @@ const HomePage = ({
         />
         <meta property="og:locale" content="vi_VN" key="desc" />
         <meta property="og:type" content="website" key="desc" />
-        <meta property="og:url" content="https://fordmydinhgiatot.com" key="desc" />
+        <meta
+          property="og:url"
+          content="https://fordmydinhgiatot.com"
+          key="desc"
+        />
         <meta
           property="og:title"
           content="Ford Mỹ Đình giá tốt - Cam kết giá tốt - Tư vấn nhiệt thành - Uy tín"
@@ -70,17 +74,27 @@ const HomePage = ({
           content="Ngập tràn ưu đãi dành cho Khách hàng | Báo giá lăn bánh tốt nhất | Ưu đãi phụ kiện cao cấp | Cam kết không phát sinh chi phí | Liên hệ ngay"
           key="desc"
         />
-        <meta property="og:site_name" content="Ford Mỹ Đình giá tốt" key="desc" />
+        <meta
+          property="og:site_name"
+          content="Ford Mỹ Đình giá tốt"
+          key="desc"
+        />
       </Head>
       <div className="flex flex-col w-full justify-center items-center">
         <Carousel />
         <div className="w-full lg:w-[1220px] xl:w-[1220px] px-6 py-12">
-          <ProductGroups
-            listProductFilterByGroup={listProductFilterByGroup}
-            allProducts={products}
-          />
-          <BestSeller bestSellerList={bestSellerList} />
-          <News newsList={news} />
+          <div id="nhom-san-pham">
+            <ProductGroups
+              listProductFilterByGroup={listProductFilterByGroup}
+              allProducts={products}
+            />
+          </div>
+          <div id="san-pham-ban-chay">
+            <BestSeller bestSellerList={bestSellerList} />
+          </div>
+          <div id="tin-tuc">
+            <News newsList={news} />
+          </div>
           <Feedback />
         </div>
       </div>
