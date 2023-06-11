@@ -10,8 +10,6 @@ type Props = {
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const news = await getDocs(dbNews).then((data) => {
-    console.log(data);
-
     return data.docs.map((item) => {
       return { ...item.data(), id: item.id };
     });
