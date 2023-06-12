@@ -31,11 +31,11 @@ const NewsDetailPage = ({
         {newsDetail?.title || ""}
       </div>
       <div className="flex flex-wrap lg:w-[1220px] lg:max-w[1220px] px-4 py-3">
-        <div className="ql-container ql-snow" style={{ borderWidth: 0 }}>
+        <div className="ql-container ql-snow w-full" style={{ borderWidth: 0 }}>
           <div
             style={{ fontSize: "1rem" }}
             className="ql-editor"
-            dangerouslySetInnerHTML={{ __html: newsDetail.editorContent }}
+            dangerouslySetInnerHTML={{ __html: newsDetail?.editorContent }}
             //   innerHTML="
             //     sanitizer.bypassSecurityTrustHtml(newsDetail.editorContent || '')
             //   "

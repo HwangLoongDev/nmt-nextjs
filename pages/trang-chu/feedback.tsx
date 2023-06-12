@@ -16,7 +16,7 @@ const Feedback = (props: Props) => {
             <div className="p-5">
               <a href="#">
                 <h5 className="text-gray-900 font-bold text-lg tracking-tight mb-2 dark:text-white">
-                  Anh Nguyễn Minh Tuấn
+                  Anh Vũ Tiến Long
                 </h5>
               </a>
               <div className="font-normal text-gray-700 mb-3 dark:text-gray-400">
@@ -32,7 +32,7 @@ const Feedback = (props: Props) => {
             <div className="p-5">
               <a href="#">
                 <h5 className="text-gray-900 font-bold text-lg tracking-tight mb-2 dark:text-white">
-                  Anh Nguyễn Minh Tuấn
+                  Anh Nguyễn Thành Đạt  
                 </h5>
               </a>
               <div className="font-normal text-gray-700 mb-3 dark:text-gray-400">
@@ -49,7 +49,7 @@ const Feedback = (props: Props) => {
             <div className="p-5">
               <a href="#">
                 <h5 className="text-gray-900 font-bold text-lg tracking-tight mb-2 dark:text-white">
-                  Anh Nguyễn Minh Tuấn
+                  Chị Hồ Thị Thanh Hà
                 </h5>
               </a>
               <div className="font-normal text-gray-700 mb-3 dark:text-gray-400">

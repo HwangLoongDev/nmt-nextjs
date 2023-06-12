@@ -21,7 +21,7 @@ const News = ({ newsList }: Props) => {
             <div className="flex flex-col sm:flex-row lg:flex-col bg-white w-full shadow-md border border-gray-200 rounded-lg dark:bg-gray-800 dark:border-gray-700">
               <div className="w-full h-72 max-h-72 relative">
                 <Image
-                  className="rounded-t-lg w-100%"
+                  className="lg:rounded-t-lg lg:rounded-b-none sm:rounded-s-lg sm:rounded-e-none sm:rounded-b-none rounded-t-lg w-100%"
                   src={item.thumbnail[0]}
                   fill
                   alt={item.title}
