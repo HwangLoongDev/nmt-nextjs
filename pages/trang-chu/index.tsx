@@ -35,7 +35,10 @@ const HomePage = ({
   news,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) => {
   const mapGroup = new Map(
-    products.filter(Boolean).map((item: any) => [item["group"]["id"], item])
+    products
+      .sort((a: any, b: any) => a.modifiedDate - b.modifiedDate)
+      .filter(Boolean)
+      .map((item: any) => [item["group"]["id"], item])
   );
 
   const listProductFilterByGroup = Array.from(mapGroup.entries())
