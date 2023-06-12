@@ -2,33 +2,12 @@ import { Splide, SplideSlide } from "@splidejs/react-splide";
 import Image from "next/image";
 import React from "react";
 import "@splidejs/react-splide/css";
+import { useRouter } from "next/router";
 
-type Props = {};
+type Props = { banners: any };
 
-const Carousel = (props: Props) => {
-  const images = [
-    {
-      itemImageSrc: "https://images4.alphacoders.com/131/1313071.jpeg",
-      thumbnailImageSrc: "https://images4.alphacoders.com/131/1313071.jpeg",
-      alt: "Description for Image 1",
-      title: "Title 1",
-    },
-    {
-      itemImageSrc:
-        "https://images.hdqwalls.com/download/deadpool-with-ford-raptor-8m-2880x1800.jpg",
-      thumbnailImageSrc: "https://images4.alphacoders.com/131/1313071.jpeg",
-      alt: "Description for Image 1",
-      title: "Title 1",
-    },
-    {
-      itemImageSrc:
-        "https://wallpapers.com/images/hd/ford-mustang-mach-1-muscle-car-a3xgi2ab9tdzxy6n.jpg",
-      thumbnailImageSrc: "https://images4.alphacoders.com/131/1313071.jpeg",
-      alt: "Description for Image 1",
-      title: "Title 1",
-    },
-  ];
-
+const Carousel = ({ banners }: Props) => {
+  const router = useRouter();
   return (
     <Splide
       className="w-full h-[80vh]"
@@ -40,14 +19,13 @@ const Carousel = (props: Props) => {
         pauseOnHover: true,
       }}
     >
-      {images.map((img, idx) => (
-        <SplideSlide className="w-full h-[80vh] overflow-hidden" key={idx}>
-          <Image
-            src={img.thumbnailImageSrc}
-            objectFit="cover"
-            fill
-            alt="Image 1"
-          />
+      {banners?.map((banner: any, idx: number) => (
+        <SplideSlide
+          className="w-full h-[80vh] overflow-hidden cursor-pointer"
+          key={idx}
+          onClick={() => router.push(`/tin-tuc/${banner?.slug}`)}
+        >
+          <Image src={banner?.thumbnail?.[0]} objectFit="cover" fill alt="Image 1" />
         </SplideSlide>
       ))}
     </Splide>

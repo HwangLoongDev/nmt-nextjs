@@ -46,6 +46,10 @@ const HomePage = ({
     (e: any) => e.direction === "right"
   );
 
+  const bannersFiltered = news.filter((e: any) => e.banner);
+
+  const newsFiltered = news.filter((e: any) => !e.banner);
+
   return (
     <>
       <Head>
@@ -81,7 +85,7 @@ const HomePage = ({
         />
       </Head>
       <div className="flex flex-col w-full justify-center items-center">
-        <Carousel />
+        <Carousel banners={bannersFiltered} />
         <div className="w-full lg:w-[1220px] xl:w-[1220px] px-6 py-12">
           <div id="nhom-san-pham">
             <ProductGroups
@@ -93,7 +97,7 @@ const HomePage = ({
             <BestSeller bestSellerList={bestSellerList} />
           </div>
           <div id="tin-tuc">
-            <News newsList={news} />
+            <News newsList={newsFiltered} />
           </div>
           <Feedback />
         </div>
