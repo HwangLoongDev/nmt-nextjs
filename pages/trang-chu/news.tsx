@@ -28,11 +28,11 @@ const News = ({ newsList }: Props) => {
                 />
               </div>
               <div className="p-5">
-                <a href="#">
+                <Link href={"/tin-tuc/" + item.slug}>
                   <h5 className="text-gray-900 font-bold text-xl tracking-tight mb-2 dark:text-white">
                     {item.title}
                   </h5>
-                </a>
+                </Link>
                 <div
                   className="mb-3"
                   dangerouslySetInnerHTML={{ __html: item.description }}
